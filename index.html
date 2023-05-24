@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <link rel="stylesheet" href="./webix/codebase/webix.css" type="text/css" charset="utf-8">
+  <link rel="stylesheet" href="./webix/codebase/skins/compact.min.css" type="text/css" charset="utf-8">
+
+  <script src="./webix/codebase/webix.js" type="text/javascript" charset="utf-8"></script>
+
+  <style>
+    .my_style {}
+
+    .my_style .webix_hcell {
+      font-family: 'PT Sans';
+      font-size: 13px;
+    }
+  </style>
+  <script src="./components/components.js"></script>
+  <title>Meu Projeto Node.js</title>
+</head>
+
+<body>
+  <h1>Olá, Node.js!</h1>
+  <div id='layout_div'></div>
+  <script type="text/javascript" charset="utf-8">
+
+    /*webix.ui({
+      view: "view2",
+      conteiner:'layout_div'
+    });
+        webix.ui({
+          view: "menuList",
+          template:"#title#",
+          
+          data: [
+            { id: 1, title: "Item 1" },
+            { id: 2, title: "Item 2" },
+            { id: 3, title: "Item 3" }
+          ],
+          menu: ["One", "Two"]
+        });*/
+    webix.ui({
+      rows: [
+        {
+          view: "fwviewtabtabble",
+          id: "fwviewtabtabbleTeste",
+          columns_grid: [{
+            id: "xxx", width: 60,
+          },
+
+          ],
+          clickBtnNovo: function () {
+            console.log(this.getParentView().getParentView());
+          }
+        },
+        {
+          view: "buttonTeste",
+          id: "my_button",
+          type: "icon",
+          icon: "wxi-pencil",
+          meuvetor: [1, 2],
+          meuvetor2: [4, 5],
+          //css:"webix_primary", 
+          //inputWidth:80 
+          tamanho: 50,
+
+
+        }, {
+          view: "fwtreetable",
+          headerRowHeight: 31,
+          rowHeight: 24,
+          css: "my_style",
+          columns: [{ id: "id", header: "id", css: "rank", width: 50 },],
+          //labelTopHeight: 10,
+          // headerRowHeight: 30,
+          data: [{ id: 1 }]
+        },
+      ]
+
+    });
+    //button.metodoTeste();
+    $$("fwviewtabtabbleTeste").adicionarBotao({ view: "buttonTeste",width:60 });
+    $$("my_button").attachEvent("onItemClick", function (id, e) {
+      // code
+      console.log($$("my_button").config.tamanho);
+      $$("my_button").metodoTeste();
+    });
+
+
+  </script>
+</body>
+
+</html>
